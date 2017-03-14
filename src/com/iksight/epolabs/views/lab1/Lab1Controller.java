@@ -2,7 +2,6 @@ package com.iksight.epolabs.views.lab1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
@@ -35,7 +34,7 @@ public class Lab1Controller {
             try {
                 FileWorker.update(FileWorker.getFile(), i);
             } catch (FileNotFoundException e) {
-                System.out.println("Такого файла не существует!");
+                System.out.println("File not found!");
             }
         }
 
@@ -51,7 +50,7 @@ public class Lab1Controller {
         try {
             FileWorker.write(FileWorker.getFile(), builder.toString());
         } catch (FileNotFoundException e) {
-            System.out.println("Такого файла не существует!");
+            System.out.println("File not found!");
         }
         measure(3);
 
