@@ -127,7 +127,14 @@ public class FileWorker {
 
     public static void createFile(String fname) {
         filename = fname;
-        file = new File(fname);
+        if (file != null) {
+            try {
+                write(FileWorker.getFile(), "");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else
+            file = new File(fname);
     }
 
     public static File getFile() {

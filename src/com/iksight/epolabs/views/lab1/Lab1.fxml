@@ -20,19 +20,19 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="oldTimeLabel" text="Label" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="oldWTimeLabel" text="Label" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="Georgia" size="14.0" />
                </font></Label>
-            <Label fx:id="newTimeLabel" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="newWTimeLabel" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font name="Georgia" size="14.0" />
                </font></Label>
-            <Label fx:id="percentTimeLabel" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label fx:id="rTimeLabel" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font name="Georgia" size="14.0" />
                </font></Label>
-            <Label text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="percentWTimeLabel" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="Georgia" size="14.0" />
                </font>

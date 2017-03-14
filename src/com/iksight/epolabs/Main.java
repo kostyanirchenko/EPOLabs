@@ -79,6 +79,7 @@ public class Main extends Application {
                 case "btnLab1":
                     loader.setLocation(Main.class.getResource("views/lab1/Lab1.fxml"));
                     AnchorPane lab1 = (AnchorPane) loader.load();
+                    Lab1Controller lab1Controller = loader.getController();
                     rootLayout.setCenter(lab1);
                     break;
                 case "btnLab2":
