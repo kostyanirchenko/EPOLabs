@@ -26,7 +26,7 @@ public class Lab1Controller {
     @FXML
     public Label percentWTimeLabel;
 
-    public Lab1Controller() {
+    public void initialize() {
         FileWorker.createFile("withoutBuff.txt");
 
         measure(1);
@@ -53,7 +53,6 @@ public class Lab1Controller {
         } catch (FileNotFoundException e) {
             System.out.println("Такого файла не существует!");
         }
-
         measure(3);
 
         FileWorker.read(FileWorker.getFilename());
@@ -75,15 +74,15 @@ public class Lab1Controller {
         float oldWTimePercent = (oldWTime * 100)/ (oldWTime + newWTime);
         float newWTimePercent = (newWTime * 100) / (oldWTime + newWTime);
 
-        oldWTimeLabel.setText("Duration of write method without using buffer: " + oldWTime);
-        newWTimeLabel.setText("Duration of write method using buffer: " + newWTime);
-        rTimeLabel.setText("Duration of read method: " + rTime);
+        oldWTimeLabel.setText("Duration of write method without using buffer: " + customFormat(oldWTime));
+        newWTimeLabel.setText("Duration of write method using buffer: " + customFormat(newWTime));
+        rTimeLabel.setText("Duration of read method: " + customFormat(rTime));
         percentWTimeLabel.setText("Percentage (write without buff/write with buff): " +
-                customFormat(oldWTimePercent) + "/" + customFormat(newWTimePercent));
+                customFormat(oldWTimePercent) + "% /" + customFormat(newWTimePercent) + "%");
     }
 
    private String customFormat(float value) {
-        DecimalFormat myFormatter = new DecimalFormat("#.##");
+        DecimalFormat myFormatter = new DecimalFormat("0.###");
         return myFormatter.format(value);
     }
 }
