@@ -78,6 +78,20 @@ public class FileWorker {
         }
     }
 
+    public static void write(File file, long l) throws IOException {
+        try {
+            try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(file.getPath()), "UTF8"))) {
+                bw.write(l + "");
+                bw.flush();
+            }
+        } catch (UnsupportedEncodingException | FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * Обновление указаного пользователем файла. Считывает файл в StringBuilder и отправляет на перезапись.
      * Смотри {@link #write(java.io.File, java.lang.String) }
@@ -143,6 +157,30 @@ public class FileWorker {
 
     public static String getFilename() {
         return filename;
+    }
+
+    public static byte[] getBytesFromFile(File file) throws IOException {
+        InputStream inputStream = new FileInputStream(file);
+        long length = file.length();
+
+        if (length > Integer.MAX_VALUE /*|| !file.exists()*/) {
+            return null;
+        }
+
+        byte[] bytes = new byte[(int) length];
+        int offset = 0;
+        int numRead = 0;
+
+        while (offset < bytes.length && (numRead = inputStream.read(bytes, offset, bytes.length-offset)) >= 0) {
+            offset += numRead;
+        }
+
+        if (offset < bytes.length) {
+            throw new IOException("Невозможно прочитать файл " + file.getName());
+        }
+
+        inputStream.close();
+        return bytes;
     }
 
     public static void main(String[] args) throws IOException {
