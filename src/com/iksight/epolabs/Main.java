@@ -3,22 +3,23 @@ package com.iksight.epolabs;/**
  */
 
 import com.iksight.epolabs.views.lab1.Lab1Controller;
+import com.iksight.epolabs.views.lab2.Lab2Controller;
+import com.iksight.epolabs.views.lab3.Lab3Controller;
+import com.iksight.epolabs.views.lab5.Lab5Controller;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -83,16 +84,32 @@ public class Main extends Application {
                     rootLayout.setCenter(lab1);
                     break;
                 case "btnLab2":
-                    showDevInfo();
+                    loader.setLocation(Main.class.getResource("views/lab2/Lab2.fxml"));
+                    AnchorPane lab2 = (AnchorPane) loader.load();
+                    Lab2Controller lab2Controller = loader.getController();
+                    lab2Controller.setFile(loadFile());
+                    rootLayout.setCenter(lab2);
+                    lab2Controller.setStage(primaryStage);
+                    lab2Controller.run();
                     break;
                 case "btnLab3":
-
+                    loader.setLocation(Main.class.getResource("views/lab3/Lab3.fxml"));
+                    AnchorPane lab3 = (AnchorPane) loader.load();
+                    Lab3Controller lab3Controller = loader.getController();
+                    lab3Controller.setFile(loadFile());
+                    rootLayout.setCenter(lab3);
+                    lab3Controller.run();
                     break;
                 case "btnLab4":
 
                     break;
                 case "btnLab5":
-
+                    loader.setLocation(Main.class.getResource("views/lab5/Lab5.fxml"));
+                    AnchorPane lab5 = (AnchorPane) loader.load();
+                    Lab5Controller lab5Controller = loader.getController();
+                    lab5Controller.setFile(loadFile());
+                    rootLayout.setCenter(lab5);
+                    lab5Controller.run();
                     break;
                 case "btnLab6":
 
@@ -113,6 +130,12 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private File loadFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Выберите файл");
+        return fileChooser.showOpenDialog(new Stage());
     }
 
     public void actionButtonClick() {
